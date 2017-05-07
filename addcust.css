@@ -5,3 +5,8 @@
     color: green;
     font-size: 25px;
 }
+
+.errormsg{
+    color: red;
+    font-size: 15.5px;
+}
