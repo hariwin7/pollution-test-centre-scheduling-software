@@ -1,0 +1,19 @@
+#back{
+    
+    border: none;
+    color: white;
+    }
+#back button{
+    background-color:#2f3241;
+    border: none;
+    width: 80px;
+    height: 40px;
+    color: white;
+    font-weight: 10px;
+    font-size: 15.8px;
+    box-shadow: 8px 8px 5px #888888;
+}
+#back button:hover{
+    background-color:#333852;
+    margin-left:2px;
+}

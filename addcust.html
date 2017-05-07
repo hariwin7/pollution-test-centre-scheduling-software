@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>  
+    <head>
+        <title>Add New customer</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="addcust.css">
+          <link rel="stylesheet" href="new.css">
+    </head>
+    <body>
+   <div class="container top-margin"> 
+    <h2>Add new Customer</h2>
+    <div class="form-group">
+        <label for="usr">Name:</label>
+        <input type="text" class="form-control" id="name">
+    </div>
+    <div class="form-group">
+        <label for="usr">Vehicle No:</label>
+        <input type="text" class="form-control" id="vehicle">
+    </div>
+    <div class="form-group">
+        <label for="usr">Phone:</label>
+        <input type="text" class="form-control" id="phone">
+    </div>
+    <div class="form-group">
+        <label for="comment">Address:</label>
+        <textarea class="form-control" rows="5" id="address"></textarea>
+    </div>
+    <div class="form-group">
+        <div id="back">
+            <label id="mess"></label><br>
+            <a href="index.html"><button>back</button></a>
+            <a href="#"><button id="btnadd">Add</button></a>
+            <br>
+        
+        </div>
+        
+    </div>
+   </div>
+   <script>
+
+document.querySelector('#btnadd').addEventListener('click', getData)
+function getData(){
+    var mysql = require('mysql');
+    var name = document.getElementById("name").value;
+    var vehicle = document.getElementById("vehicle").value;
+    var phone = document.getElementById("phone").value;
+    var address = document.getElementById("address").value;
+    console.log(address);
+    // Add the credentials to access your database
+var connection = mysql.createConnection({
+    host     : 'localhost',
+    user     : 'root',
+    password : 'password', // or the original password : 'apaswword'
+    database : 'db'
+});
+
+// connect to mysql
+connection.connect(function(err) {
+    // in case of error
+    if(err){
+        console.log(err.code);
+        console.log(err.fatal);
+    }
+});
+
+// Perform a query
+$query = 'INSERT INTO TEST VALUES(?,?,?,?,?)';
+
+connection.query($query,[1,name,phone,vehicle,address], function(err, rows, fields) {
+    if(err){
+        console.log("An error ocurred performing the query.");
+        console.log(err);
+        return;
+    }
+
+    console.log("Query succesfully executed", rows);
+     document.getElementById("mess").innerHTML = "Successfull";
+    
+
+});
+
+// Close the connection
+connection.end(function(){
+    // The connection has been closed
+});
+
+}
+
+
+
+   </script>
+     </body>
+</html>

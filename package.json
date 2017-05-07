@@ -1,0 +1,12 @@
+{
+  "name": "newapp",
+  "version": "0.1.0",
+  "description": "read",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron main.js"
+
+  },
+  "author": "hari",
+  "license": "MIT"
+}
