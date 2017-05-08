@@ -108,9 +108,9 @@
             });
 
             // Perform a query
-            $query = 'SELECT * FROM TEST';
-
-            connection.query($query, function(err, rows, fields) {
+            $query = 'SELECT * FROM TEST WHERE date_of_next_test=?';
+            var moment = require('moment');
+            connection.query($query,[moment().format('YYYY-MM-DD')], function(err, rows, fields) {
                 if(err){
                     console.log("An error ocurred performing the query.");
                     console.log(err);

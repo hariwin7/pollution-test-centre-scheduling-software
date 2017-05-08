@@ -2,11 +2,13 @@
 <html>  
     <head>
         <title>Add New customer</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="addcust.css">
-          <link rel="stylesheet" href="new.css">
+        <link rel="stylesheet" href="./css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="./css/addcust.css">
+          <link rel="stylesheet" href="./css/new.css">
     </head>
     <body>
+        <script>window.$ = window.jQuery = require('./node_modules/jquery');</script>
+         <script src="./js/bootstrap.min.js"></script>
    <div class="container top-margin"> 
     <h2>Add new Customer</h2>
     <div class="form-group">
@@ -41,7 +43,8 @@
    </div>
    <script>
 
-document.querySelector('#btnadd').addEventListener('click', getData)
+document.querySelector('#btnadd').addEventListener('click', getData);
+
 function getData(){
     var mysql = require('mysql');
     var name = document.getElementById("name").value;
@@ -106,11 +109,17 @@ if(address == "" || address == null){
 }
 
 // Perform a query
-$query = 'INSERT INTO TEST(name,phone,vehicle,address) VALUES(?,?,?,?)';
+$query = 'INSERT INTO TEST(name,phone,vehicle,address,date_of_test,date_of_next_test) VALUES(?,?,?,?,?,?)';
 if(flag == 0){
+ var moment =  require('moment');
+var currentdate =moment().format('YYYY-MM-DD');
+// var currentdate = moment('2016-11-08').format('YYYY-MM-DD');//this is to test
+var a = moment(currentdate);
+var testdate = a.add(6,'month').format('YYYY-MM-DD');
+console.log(currentdate);
+console.log(testdate);
 
-
-connection.query($query,[name,phone,vehicle,address], function(err, rows, fields) {
+connection.query($query,[name,phone,vehicle,address,currentdate,testdate], function(err, rows, fields) {
     if(err){
         console.log("An error ocurred performing the query.");
         document.getElementById("mess").innerHTML = "Error occured please try again";

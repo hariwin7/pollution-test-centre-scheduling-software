@@ -2,6 +2,7 @@
     
     border: none;
     color: white;
+    margin-bottom: 20px;
     }
 #back button{
     background-color:#2f3241;
@@ -16,4 +17,20 @@
 #back button:hover{
     background-color:#333852;
     margin-left:2px;
+}
+
+.version{
+    display: flex;
+    margin-left: 25%;
+    margin-bottom: 35%;
+}
+.author{
+    display: flex;
+    margin-left: 30%;
+    
+}
+.rights{
+    display: flex;
+    margin-left: 37%;
+    
 }
